@@ -46,13 +46,14 @@ public class PlayerMovement : NetworkBehaviour
         }
 
         var cameraRotationY = Quaternion.Euler(0, mainCamera.transform.rotation.eulerAngles.y, 0);
-        var move = cameraRotationY * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * playerSpeed;
+        var move = cameraRotationY * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * Runner.DeltaTime * playerSpeed;
 
         _velocity.y += gravityValue * Runner.DeltaTime;
         if (_jumpPressed && _controller.isGrounded)
         {
             _velocity.y += jumpForce;
         }
+        
         _controller.Move(move + _velocity * Runner.DeltaTime);
 
         if (move != Vector3.zero)

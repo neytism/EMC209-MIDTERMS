@@ -14,7 +14,7 @@ public class RaycastAttack : NetworkBehaviour
     {
         if (!HasStateAuthority) return;
 
-        var ray = PlayerMovement.mainCamera.ScreenPointToRay(Input.mousePosition);
+        var ray = PlayerMovement.mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
         ray.origin += PlayerMovement.mainCamera.transform.forward;
 
         delayTimeLeft -= Runner.DeltaTime;
