@@ -24,7 +24,7 @@ public class PlayerChat : NetworkBehaviour
         }
     }
     
-    private void SendChatInputMessage(string message)
+    public void SendChatInputMessage(string message)
     {
         if (Runner.LocalPlayer == Object.InputAuthority)
         {

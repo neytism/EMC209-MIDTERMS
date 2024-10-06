@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerHealth : NetworkBehaviour
 {
-    public static event Action OnHurtEvent; 
+    public static event Action<float,float> OnLocalPlayerChangeHealthEvent; 
+    
     [Networked, OnChangedRender(nameof(HealthChanged))]
     private float NetworkedHealth { get; set; }
 
-    private const float MaxHealth = 200f;
+    private const float MaxHealth = 100f;
     public event Action<float> OnDamageEvent;
 
     public override void Spawned()
@@ -24,7 +25,8 @@ public class PlayerHealth : NetworkBehaviour
 
         if (HasStateAuthority)
         {
-            OnHurtEvent?.Invoke();
+            if (NetworkedHealth >= MaxHealth) return;
+            OnLocalPlayerChangeHealthEvent?.Invoke(NetworkedHealth,MaxHealth);
         }
     }
     

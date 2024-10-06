@@ -10,17 +10,28 @@ public class UIManager : MonoBehaviour
 {
    public event Action<string> OnButtonSendChatEvent;
    
+   [Header("General")]
+   public GameObject HUDObject;
+   
+   [Header("Health")]
+   public TextMeshProUGUI healthText;
+   public Image healthBar;
+   public Image blood;
+   
+   [Header("Chat Input")]
    public GameObject chatInputContainer;
-    
    public Button buttonSendChat;
    public TMP_InputField inputChat;
    
+   [Header("Chat Log")]
+   public GameObject chatLogContainer;
    public RectTransform chatLogHolder;
    public GameObject chatTextPrefab;
    
+   [Header("Name")]
    public TextMeshProUGUI nameText;
 
-   public Image blood;
+   
    
    private void Awake()
    {
@@ -35,8 +46,8 @@ public class UIManager : MonoBehaviour
    
    private void OnEnable()
    {
-      PlayerName.OnSpawnSetUINameEvent += UpdateNameUI;
-      PlayerHealth.OnHurtEvent += TriggerHurtEffect;
+      PlayerName.OnSpawnSetUINameEvent += OnLocalPlayerSpawn;
+      PlayerHealth.OnLocalPlayerChangeHealthEvent += UpdateUIOnDamage;
    }
    
    private void Update()
@@ -48,7 +59,9 @@ public class UIManager : MonoBehaviour
             if (inputChat.text == String.Empty)
             {
                chatInputContainer.SetActive(false);
+               chatLogContainer.SetActive(false);
                inputChat.DeactivateInputField();
+               
             }
             else
             {
@@ -58,6 +71,7 @@ public class UIManager : MonoBehaviour
          }
          else
          {
+            chatLogContainer.SetActive(true);
             chatInputContainer.SetActive(true);
             inputChat.ActivateInputField();
          }
@@ -67,22 +81,36 @@ public class UIManager : MonoBehaviour
       }
    }
 
-   private void UpdateNameUI(string obj)
+   private void OnLocalPlayerSpawn(string newPlayerName)
    {
-      nameText.text = obj;
+      HUDObject.SetActive(true);
+      nameText.text = newPlayerName;
    }
 
-   private void TriggerHurtEffect()
+   private void UpdateUIOnDamage(float currentHealth, float maxHealth)
    {
       blood.DOColor(new Color(blood.color.r, blood.color.g, blood.color.b, 1f), 0f).onComplete = () =>
       {
          blood.DOColor(new Color(blood.color.r, blood.color.g, blood.color.b, 0f), 0.5f);
       };
+
+      healthText.text = $"{currentHealth}";
+      healthBar.fillAmount = currentHealth / maxHealth;
    }
    
    public void InstantiateChat(string pname, string message)
    {
+      StartCoroutine(ShowHideChatLog(3f));
       GameObject newChat = Instantiate(chatTextPrefab, chatLogHolder);
       newChat.GetComponent<TextMeshProUGUI>().text = "<" + pname + "> " +message;
+   }
+   
+   private IEnumerator ShowHideChatLog(float secs)
+   {
+      chatLogContainer.SetActive(true);
+
+      yield return new WaitForSeconds(secs);
+
+      chatLogContainer.SetActive(false);
    }
 }

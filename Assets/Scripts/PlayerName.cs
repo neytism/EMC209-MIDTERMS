@@ -31,6 +31,7 @@ public class PlayerName : NetworkBehaviour
         nickname = NetworkedNickname;
         
         Debug.Log(NetworkedNickname + " Joined the game.");
+        GetComponent<PlayerChat>().SendChatInputMessage(" Joined the game.");
         RPC_UpdateTextName();
 
     }

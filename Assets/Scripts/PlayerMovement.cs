@@ -30,6 +30,7 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!HasStateAuthority) return;
         
+        
         mainCamera = Camera.main;
         if (mainCamera != null) mainCamera.GetComponent<FirstPersonCamera>().Target = transform;
     }

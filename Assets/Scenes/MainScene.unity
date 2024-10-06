@@ -308,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &170469024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -326,6 +326,7 @@ RectTransform:
   - {fileID: 1044465184}
   - {fileID: 6329669034154255089}
   - {fileID: 2117544674382015054}
+  - {fileID: 2125224716}
   m_Father: {fileID: 667906284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -838,7 +839,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2125224716}
   - {fileID: 170469024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -859,14 +859,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef0b193b265ea54e9941365ebc5f7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUDObject: {fileID: 170469023}
+  healthText: {fileID: 1901718590}
+  healthBar: {fileID: 733958496}
+  blood: {fileID: 1044465182}
   chatInputContainer: {fileID: 191403629937611500}
   buttonSendChat: {fileID: 4399962434599284839}
   inputChat: {fileID: 6997112395850779890}
+  chatLogContainer: {fileID: 4397603909751220787}
   chatLogHolder: {fileID: 7149757676505416481}
   chatTextPrefab: {fileID: 890000180234922820, guid: 0c8b20fe9dfd8e7488b92add7ad111b1,
     type: 3}
   nameText: {fileID: 131448188}
-  blood: {fileID: 1044465182}
 --- !u!1 &733958494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,14 +2643,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125224715}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2058000992}
   - {fileID: 654293961}
-  m_Father: {fileID: 667906284}
+  m_Father: {fileID: 170469024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3038,7 +3042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4399962434599284839
 MonoBehaviour:
   m_ObjectHideFlags: 0
