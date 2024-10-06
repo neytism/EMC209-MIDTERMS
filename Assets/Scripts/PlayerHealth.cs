@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : NetworkBehaviour
 {
+    public static event Action OnHurtEvent; 
     [Networked, OnChangedRender(nameof(HealthChanged))]
     private float NetworkedHealth { get; set; }
 
@@ -20,6 +21,11 @@ public class PlayerHealth : NetworkBehaviour
     {
         Debug.Log($"Health changed to: {NetworkedHealth}");
         OnDamageEvent?.Invoke(NetworkedHealth/MaxHealth);
+
+        if (HasStateAuthority)
+        {
+            OnHurtEvent?.Invoke();
+        }
     }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : NetworkBehaviour
 {
+    public Transform weaponHolderTransform;
+    
     private Vector3 _velocity;
     private bool _jumpPressed;
     private bool _canMove;
@@ -51,6 +53,7 @@ public class PlayerMovement : NetworkBehaviour
         }
 
         var cameraRotationY = Quaternion.Euler(0, mainCamera.transform.rotation.eulerAngles.y, 0);
+
         var move = cameraRotationY * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * Runner.DeltaTime * playerSpeed;
 
         _velocity.y += gravityValue * Runner.DeltaTime;
@@ -60,16 +63,13 @@ public class PlayerMovement : NetworkBehaviour
         }
         
         _controller.Move(move + _velocity * Runner.DeltaTime);
+        
+        transform.rotation = Quaternion.Euler(0, mainCamera.transform.rotation.eulerAngles.y, 0);
 
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
-        else
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, mainCamera.transform.rotation.eulerAngles.y, 0);
-        }
-
+        Vector3 weaponRotation = new Vector3(mainCamera.transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        
+        weaponHolderTransform.rotation = Quaternion.Euler(weaponRotation);
+        
         _jumpPressed = false;
     }
     

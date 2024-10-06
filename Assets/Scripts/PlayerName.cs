@@ -15,6 +15,7 @@ public class PlayerName : NetworkBehaviour
     [Networked] public string NetworkedNickname { get; private set; }
 
     public static event Action OnNicknameChangeEvent;
+    public static event Action<string> OnSpawnSetUINameEvent;
     
     
     public override void Spawned()
@@ -22,6 +23,7 @@ public class PlayerName : NetworkBehaviour
         if (HasStateAuthority)
         {
             NetworkedNickname = FindObjectOfType<FusionBootstrap>().DefaultNickname;
+            OnSpawnSetUINameEvent?.Invoke(NetworkedNickname);
             
         }
 
