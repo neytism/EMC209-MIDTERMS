@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -6,6 +8,7 @@ public class PlayerMovement : NetworkBehaviour
 {
     private Vector3 _velocity;
     private bool _jumpPressed;
+    private bool _canMove;
 
     private CharacterController _controller;
 
@@ -18,6 +21,7 @@ public class PlayerMovement : NetworkBehaviour
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        
     }
     
     public override void Spawned()
@@ -39,7 +43,8 @@ public class PlayerMovement : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         // FixedUpdateNetwork is only executed on the StateAuthority
-
+        if (!_canMove) return;;
+        
         if (_controller.isGrounded)
         {
             _velocity = new Vector3(0, -1, 0);
@@ -60,7 +65,24 @@ public class PlayerMovement : NetworkBehaviour
         {
             gameObject.transform.forward = move;
         }
+        else
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, mainCamera.transform.rotation.eulerAngles.y, 0);
+        }
 
         _jumpPressed = false;
+    }
+    
+    public IEnumerator WaitBeforeMoving(Vector3 pos)
+    {
+        _canMove = false;
+        
+        while (transform.position != pos)
+        {
+            transform.position = pos;
+            yield return null;  
+        }
+
+        _canMove = true;
     }
 }

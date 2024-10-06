@@ -16,6 +16,6 @@ public class PlayerNameTextController : MonoBehaviour
     
     private void UpdateNameText()
     {
-        nameHolder.text = _playerName.nickname;
+        nameHolder.text = _playerName.thisID + " " + _playerName.nickname;
     }
 }

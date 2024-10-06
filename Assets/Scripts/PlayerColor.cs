@@ -1,13 +1,32 @@
+using System;
 using Fusion;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerColor : NetworkBehaviour
 {
-    public MeshRenderer MeshRenderer;
+    public Color localColor;
+    public GameObject[] visualObjects;
+
+    public SkinnedMeshRenderer MeshRenderer;
 
     [Networked, OnChangedRender(nameof(ColorChanged))]
     public Color NetworkedColor { get; set; }
-    
+
+    public override void Spawned()
+    {
+        if (HasStateAuthority)
+        {
+            foreach (var vis in visualObjects)
+            {
+                vis.layer = LayerMask.NameToLayer("InvisibleToSelf");
+            }
+        }
+
+        localColor = NetworkedColor;
+        MeshRenderer.material.color = localColor;
+    }
+
     void Update()
     {
         if (HasStateAuthority && Input.GetKeyDown(KeyCode.E))
@@ -19,6 +38,18 @@ public class PlayerColor : NetworkBehaviour
     
     void ColorChanged()
     {
-        MeshRenderer.material.color = NetworkedColor;
+        localColor = NetworkedColor;
+        MeshRenderer.material.color = localColor;
     }
+
+    public void SetPlayerColor(Color newColor)
+    {
+        if (HasStateAuthority)
+        {
+            NetworkedColor = newColor;
+        }
+        
+    }
+    
+    
 }

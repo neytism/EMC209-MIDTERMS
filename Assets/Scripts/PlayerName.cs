@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class PlayerName : NetworkBehaviour
 {
     public string nickname;
+    public int thisID;
     
-    [Networked]
-    public string NetworkedNickname { get; private set; }
+   
+    [Networked] public string NetworkedNickname { get; private set; }
 
     public static event Action OnNicknameChangeEvent;
     
@@ -21,9 +22,13 @@ public class PlayerName : NetworkBehaviour
         if (HasStateAuthority)
         {
             NetworkedNickname = FindObjectOfType<FusionBootstrap>().DefaultNickname;
+            
         }
 
+        thisID = Object.StateAuthority.PlayerId;
         nickname = NetworkedNickname;
+        
+        Debug.Log(NetworkedNickname + " Joined the game.");
         RPC_UpdateTextName();
 
     }
