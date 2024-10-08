@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7469c7f3b01c70a439a4c33d838d5ee3, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  gunName: Ironstrike
+  gunDamage: 45
+  maxAmmo: 25
+  spreadAmount: 0.001
+  fireRate: 0.75
+  camShakeDuration: 0.1
+  camShakeIntensity: 0.08
+  gunModel: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
+    type: 3}

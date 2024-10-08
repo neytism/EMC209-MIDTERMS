@@ -28,7 +28,7 @@ public class TeamManager : MonoBehaviour
         if (spawnPoints.Length == 0)
         {
             Debug.LogWarning("No spawn points available for the selected team.");
-            return new GameObject().transform; // Return a default empty GameObject to avoid errors
+            return new GameObject().transform; 
         }
 
         int randomIndex = Random.Range(0, spawnPoints.Length);

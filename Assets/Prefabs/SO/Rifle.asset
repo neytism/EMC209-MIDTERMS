@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7469c7f3b01c70a439a4c33d838d5ee3, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: 
+  gunName: Stormburst
+  gunDamage: 10
+  maxAmmo: 100
+  spreadAmount: 0.01
+  fireRate: 0.01
+  camShakeDuration: 0.1
+  camShakeIntensity: 0.05
+  gunModel: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+    type: 3}

@@ -7,14 +7,17 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
 
-    
+    public Transform[] spawnPoints;
 
     public void PlayerJoined(PlayerRef player)
     {
         if (player == Runner.LocalPlayer)
         {
-            Runner.Spawn(PlayerPrefab, Vector3.zero, Quaternion.identity, player);
+            int spawnIndex = Runner.SessionInfo.PlayerCount % spawnPoints.Length;
             
+            Runner.Spawn(PlayerPrefab, spawnPoints[spawnIndex].position, Quaternion.identity, player);
+
+
         }
     }
 

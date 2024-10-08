@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FirstPersonCamera : MonoBehaviour
@@ -8,10 +9,23 @@ public class FirstPersonCamera : MonoBehaviour
     private float verticalRotation;
     private float horizontalRotation;
 
+    private Vector3 pos = new Vector3();
+    private Quaternion rot = new Quaternion();
+
+    public bool isDead;
+    
+
     void LateUpdate()
     {
         if (Target == null)
         {
+            return;
+        }
+
+        if (isDead)
+        {
+            transform.position = pos;
+            transform.rotation = rot;
             return;
         }
 
@@ -26,5 +40,12 @@ public class FirstPersonCamera : MonoBehaviour
         horizontalRotation += mouseX * MouseSensitivity;
 
         transform.rotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
+    }
+
+    public void SetDeathCamPos(Transform t)
+    {
+        isDead = true;
+        pos = t.position;
+        rot = t.rotation;
     }
 }

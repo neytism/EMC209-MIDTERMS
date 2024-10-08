@@ -12,6 +12,15 @@ public class PlayerMovement : NetworkBehaviour
     private bool _jumpPressed;
     private bool _canMove;
 
+    public bool isHelpingTeleport = false;
+    public Vector3 targetPos;
+
+    public bool CanMove
+    {
+        get => _canMove;
+        set => _canMove = value;
+    }
+    
     private CharacterController _controller;
 
     [FormerlySerializedAs("PlayerSpeed")] public float playerSpeed = 2f;
@@ -30,9 +39,15 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!HasStateAuthority) return;
         
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         
         mainCamera = Camera.main;
-        if (mainCamera != null) mainCamera.GetComponent<FirstPersonCamera>().Target = transform;
+        if (mainCamera != null)
+        {
+            mainCamera.GetComponent<FirstPersonCamera>().Target = transform;
+            
+        }
     }
 
     private void Update()
@@ -45,8 +60,13 @@ public class PlayerMovement : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        if (isHelpingTeleport)
+        {
+            transform.position = targetPos;
+            if (transform.position == targetPos) isHelpingTeleport = true;
+        }
         // FixedUpdateNetwork is only executed on the StateAuthority
-        if (!_canMove) return;;
+        if (!_canMove) return;
         
         if (_controller.isGrounded)
         {
@@ -74,16 +94,5 @@ public class PlayerMovement : NetworkBehaviour
         _jumpPressed = false;
     }
     
-    public IEnumerator WaitBeforeMoving(Vector3 pos)
-    {
-        _canMove = false;
-        
-        while (transform.position != pos)
-        {
-            transform.position = pos;
-            yield return null;  
-        }
-
-        _canMove = true;
-    }
+   
 }

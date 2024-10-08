@@ -23,11 +23,15 @@ public class PlayerName : NetworkBehaviour
         if (HasStateAuthority)
         {
             NetworkedNickname = FindObjectOfType<FusionBootstrap>().DefaultNickname;
+            if (NetworkedNickname == "")
+            {
+                NetworkedNickname = "Player " + Object.StateAuthority.PlayerId;
+            }
+            
             OnSpawnSetUINameEvent?.Invoke(NetworkedNickname);
             
         }
 
-        thisID = Object.StateAuthority.PlayerId;
         nickname = NetworkedNickname;
         
         Debug.Log(NetworkedNickname + " Joined the game.");
