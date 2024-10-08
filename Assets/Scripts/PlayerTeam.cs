@@ -8,6 +8,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
 {
     public static event Action<bool> OnPlayerJoin;
     public static event Action<int, bool> OnChangeReadyStatusEvent;
+    public static event Action<int, bool> OnChangeTeamStatusEvent;
     
     [Networked] public int Kills { get; set; } 
     [Networked] public int Deaths { get; set; } 
@@ -78,6 +79,8 @@ public class PlayerTeam : NetworkBehaviour //player manager
         {
             SetTeam();
         }
+        
+        
     }
     
     public void SetTeam()
@@ -86,7 +89,13 @@ public class PlayerTeam : NetworkBehaviour //player manager
         
 
         RPC_SendJoinTeam(IsRedTeam);
-        
+        RPC_RelayTeamSet(Object.StateAuthority.PlayerId, IsRedTeam);
+    }
+    
+    [Rpc]
+    public void RPC_RelayTeamSet(int id, bool isRedTeam)
+    {
+        OnChangeTeamStatusEvent?.Invoke(id, isRedTeam);
     }
 
     public void SpawnAndSetColor()
@@ -116,6 +125,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
     {
         OnPlayerJoin?.Invoke(isRedTeam);
         _teamManager.JoinTeam(isRedTeam);
+        
     }
     
     //

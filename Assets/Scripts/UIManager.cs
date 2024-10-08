@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
       PlayerWeapon.OnAmmoChangeEvent += UpdateUIOnUseAmmo;
       PlayerWeapon.OnGunChangeEvent += UpdateUIOnChangeGun;
       PlayerTeam.OnChangeReadyStatusEvent += SetPlayerAsReady;
+      PlayerTeam.OnChangeTeamStatusEvent += SetPlayerTeam;
    }
    
    private void Update()
@@ -161,10 +162,11 @@ public class UIManager : MonoBehaviour
       
       foreach (var playerInfo in playerInfos)
       {
+         string color = playerInfo.isRedTeam ? "red" : "blue";
          GameObject o = Instantiate(playerInfoKDPrefab, gameOverPanel.transform);
-         o.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerInfo.name;
-         o.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerInfo.kills.ToString();
-         o.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = playerInfo.deaths.ToString();
+         o.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"<color=\"{color}\">{playerInfo.name}";
+         o.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"<color=\"{color}\">{playerInfo.kills.ToString()}";
+         o.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = $"<color=\"{color}\">{playerInfo.deaths.ToString()}";
       }
    }
 
@@ -191,7 +193,8 @@ public class UIManager : MonoBehaviour
 
       foreach (var playerInfo in playerInfos)
       {
-         newText += $"{playerInfo.name} - {playerInfo.kills} - {playerInfo.deaths}<br>";
+         string color = playerInfo.isRedTeam ? "red" : "blue";
+         newText += $"<color=\"{color}\">{playerInfo.name} - {playerInfo.kills} - {playerInfo.deaths}<br>";
       }
 
       playerListKD.text = newText;
@@ -225,6 +228,18 @@ public class UIManager : MonoBehaviour
       }
       UpdateReadyListUI();
       CheckIfEveryoneIsReady();
+   }
+   
+   public void SetPlayerTeam(int id, bool isRedTeam)
+   {
+      foreach (var playerInfo in playerInfos)
+      {
+         if (playerInfo.onlineId == id)
+         {
+            playerInfo.isRedTeam = isRedTeam;
+            break;
+         }
+      }
    }
 
    public void CheckIfEveryoneIsReady()

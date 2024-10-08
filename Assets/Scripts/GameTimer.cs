@@ -7,7 +7,7 @@ public class GameTimer : NetworkBehaviour
     [Networked] private TickTimer countdownTimer { get; set; } 
     [Networked] private bool timerActive { get; set; } 
 
-    public float timerDuration = 180f;
+    public float timerDuration = 180f; // 180 is 3 minutes
     private UIManager _uiManager;
 
     public override void Spawned()
