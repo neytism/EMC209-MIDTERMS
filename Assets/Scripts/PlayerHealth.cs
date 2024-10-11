@@ -11,8 +11,6 @@ public class PlayerHealth : NetworkBehaviour
     public static event Action OnLocalPlayerHurtEvent; 
     public static event Action<Vector3> OnDeathEvent;
 
-    public event Action OnRespawnEvent;
-
     private const float MaxHealth = 100f;
     public event Action<float> OnDamageEvent;
 
@@ -20,7 +18,6 @@ public class PlayerHealth : NetworkBehaviour
 
     public GameObject healthCrate;
     public PlayerTeam playerTeam;
-    private TeamManager teamManager;
     public Transform deathCamTransform;
 
     [Header("Things to toggle on death")] 
@@ -34,8 +31,6 @@ public class PlayerHealth : NetworkBehaviour
 
     public override void Spawned()
     {
-        teamManager = FindObjectOfType<TeamManager>();
-        //OnRespawnEvent += Respawn;
         NetworkedHealth = MaxHealth;
         IsDead = false;
     }
@@ -70,14 +65,13 @@ public class PlayerHealth : NetworkBehaviour
 
     void HealthChanged()
     {
+       
         Debug.Log($"Health changed to: {NetworkedHealth}");
         
         OnDamageEvent?.Invoke(NetworkedHealth/MaxHealth); // event for all
 
         if (NetworkedHealth <= 0)
         {
-            NetworkObject crate = Runner.Spawn(healthCrate, GetGroundPosition(), Quaternion.identity);
-
             //crate.GetComponent<HealthCrate>().idOfSpawner = Object.StateAuthority.PlayerId;
             
             //death for all
@@ -96,6 +90,8 @@ public class PlayerHealth : NetworkBehaviour
                 //death 
                 if (IsDead) return;
                 IsDead = true;
+
+                RPC_SpawnHealthCrate();
 
                 GetComponent<PlayerMovement>().CanMove = false;
                 GetComponent<PlayerWeapon>().CanShoot = false;
@@ -143,6 +139,12 @@ public class PlayerHealth : NetworkBehaviour
     public void RPC_RelayDeathInfo(int idDead, int idKiller)
     {
         OnDeathUpdateKDEvent?.Invoke(idDead, idKiller);
+    }
+    
+    [Rpc]
+    public void RPC_SpawnHealthCrate()
+    {
+        Runner.Spawn(healthCrate, GetGroundPosition(), Quaternion.identity);
     }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

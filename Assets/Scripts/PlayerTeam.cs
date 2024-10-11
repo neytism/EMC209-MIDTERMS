@@ -18,9 +18,6 @@ public class PlayerTeam : NetworkBehaviour //player manager
 
     private TeamManager _teamManager;
     public PlayerMovement playerMovement;
-    public PlayerHealth playerHealth;
-
-    public Vector3 targetSpawnPoint;
 
     public override void Spawned()
     {
@@ -30,8 +27,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
         }
 
         ReadyButton.OnHitReadyButtonEvent += SetIsReady;
-        UIManager.OnStartBattleEvent += SpawnAndSetColor;
-        playerHealth.OnRespawnEvent += SpawnAndSetColor;
+        GameManager.OnStartBattleEvent += SpawnAndSetColor;
         
         PlayerInfo player = new PlayerInfo
         {
@@ -45,7 +41,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
         
         string ser = JsonUtility.ToJson(player);
 
-        FindObjectOfType<UIManager>().JoinPlayer(ser);
+        FindObjectOfType<GameManager>().JoinPlayer(ser);
 
         StartCoroutine(SetTeamManager());
     }
@@ -109,6 +105,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
         playerMovement.CanMove = false;
 
         playerMovement.targetPos = spawnPoint.position;
+        playerMovement.targetRot = spawnPoint.rotation;
         playerMovement.isHelpingTeleport = true;
 
         

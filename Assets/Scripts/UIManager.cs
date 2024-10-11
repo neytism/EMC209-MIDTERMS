@@ -65,11 +65,10 @@ public class UIManager : MonoBehaviour
       PlayerName.OnSpawnSetUINameEvent += OnLocalPlayerSpawn;
       PlayerHealth.OnLocalPlayerChangeHealthEvent += UpdateUIHealth;
       PlayerHealth.OnLocalPlayerHurtEvent += TriggerHurtEffect;
-      PlayerHealth.OnDeathUpdateKDEvent += UpdateKillDeathInfo;
+      
       PlayerWeapon.OnAmmoChangeEvent += UpdateUIOnUseAmmo;
       PlayerWeapon.OnGunChangeEvent += UpdateUIOnChangeGun;
-      PlayerTeam.OnChangeReadyStatusEvent += SetPlayerAsReady;
-      PlayerTeam.OnChangeTeamStatusEvent += SetPlayerTeam;
+      
    }
    
    private void Update()
@@ -154,11 +153,11 @@ public class UIManager : MonoBehaviour
       timerText.text = time;
    }
    
-   public void GameOver()
+   public void GameOver(List<PlayerInfo> playerInfos, bool isRedTeamWinner)
    {
       gameOverPanel.SetActive(true);
 
-      teamWinnerText.text = IsRedTeamWinner() ? "TEAM RED WINS!<br><br>" : "TEAM BLUE WINS!<br><br>";
+      teamWinnerText.text = isRedTeamWinner ? "TEAM RED WINS!<br><br>" : "TEAM BLUE WINS!<br><br>";
       
       foreach (var playerInfo in playerInfos)
       {
@@ -170,7 +169,7 @@ public class UIManager : MonoBehaviour
       }
    }
 
-   public void UpdateReadyListUI()
+   public void UpdateReadyListUI(List<PlayerInfo> playerInfos)
    {
       playerListReadyInfo.text = "";
 
@@ -185,7 +184,7 @@ public class UIManager : MonoBehaviour
       playerListReadyInfo.text = newText;
    }
    
-   public void UpdatePlayerKDListUI()
+   public void UpdatePlayerKDListUI(List<PlayerInfo> playerInfos)
    {
       playerListKD.text = "";
 
@@ -199,116 +198,12 @@ public class UIManager : MonoBehaviour
 
       playerListKD.text = newText;
    }
-   
-   //THINGS THAT SHOULD NOT BE HERE
 
-   [Header("PLAYERS")] 
-   public List<PlayerInfo> playerInfos = new List<PlayerInfo>();
-
-   public static event Action OnStartBattleEvent; 
-
-   public void JoinPlayer(string playerInfo)
+   public void SetGameUIAfterAllReady()
    {
-      PlayerInfo player = JsonUtility.FromJson<PlayerInfo>(playerInfo);
-    
-      playerInfos.Add(player);
-      SortPlayerInfos();
-      UpdateReadyListUI();
-   }
-
-   public void SetPlayerAsReady(int id, bool isReady)
-   {
-      foreach (var playerInfo in playerInfos)
-      {
-         if (playerInfo.onlineId == id)
-         {
-            playerInfo.isReady = isReady;
-            break;
-         }
-      }
-      UpdateReadyListUI();
-      CheckIfEveryoneIsReady();
-   }
-   
-   public void SetPlayerTeam(int id, bool isRedTeam)
-   {
-      foreach (var playerInfo in playerInfos)
-      {
-         if (playerInfo.onlineId == id)
-         {
-            playerInfo.isRedTeam = isRedTeam;
-            break;
-         }
-      }
-   }
-
-   public void CheckIfEveryoneIsReady()
-   {
-      foreach (var playerInfo in playerInfos)
-      {
-         if (!playerInfo.isReady) return;
-      }
       playerListReadyInfo.gameObject.SetActive(false);
       playerListKD.gameObject.SetActive(true);
-      UpdatePlayerKDListUI();
-      OnStartBattleEvent?.Invoke();
    }
 
-   public void UpdateKillDeathInfo(int idDead, int idKiller)
-   {
-      foreach (var playerInfo in playerInfos)
-      {
-         if (playerInfo.onlineId == idDead)
-         {
-            playerInfo.deaths++;
-            break;
-         }
-      }
-      
-      foreach (var playerInfo in playerInfos)
-      {
-         if (playerInfo.onlineId == idKiller)
-         {
-            playerInfo.kills++;
-            break;
-         }
-      }
-      
-      SortPlayerInfosByKills();
-      UpdatePlayerKDListUI();
-   }
    
-   public bool IsRedTeamWinner()
-   {
-      int redTeamKills = 0;
-      int blueTeamKills = 0;
-
-      foreach (var playerInfo in playerInfos)
-      {
-         if (playerInfo.isRedTeam)
-         {
-            redTeamKills += playerInfo.kills;
-         }
-         else
-         {
-            blueTeamKills += playerInfo.kills;
-         }
-      }
-
-      return redTeamKills > blueTeamKills;
-   }
-   
-   
-   //sorting
-   
-   private void SortPlayerInfos()
-   {
-      playerInfos.Sort((p1, p2) => p1.onlineId.CompareTo(p2.onlineId));
-   }
-   
-   private void SortPlayerInfosByKills()
-   {
-      playerInfos.Sort((p1, p2) => p2.kills.CompareTo(p1.kills));
-   }
-
 }

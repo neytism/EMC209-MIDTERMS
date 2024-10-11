@@ -14,6 +14,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public bool isHelpingTeleport = false;
     public Vector3 targetPos;
+    public Quaternion targetRot;
 
     public bool CanMove
     {
@@ -63,6 +64,7 @@ public class PlayerMovement : NetworkBehaviour
         if (isHelpingTeleport)
         {
             transform.position = targetPos;
+            transform.rotation = targetRot;
             if (transform.position == targetPos) isHelpingTeleport = true;
         }
         // FixedUpdateNetwork is only executed on the StateAuthority

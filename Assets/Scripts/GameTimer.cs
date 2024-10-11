@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameTimer : NetworkBehaviour
 {
     [Networked] private TickTimer countdownTimer { get; set; } 
-    [Networked] private bool timerActive { get; set; } 
+    [Networked] private bool timerActive { get; set; }
 
+    public static event Action OnEndTimerEvent; 
     public float timerDuration = 180f; // 180 is 3 minutes
     private UIManager _uiManager;
 
@@ -14,7 +15,7 @@ public class GameTimer : NetworkBehaviour
     {
         _uiManager = FindObjectOfType<UIManager>();
         
-        UIManager.OnStartBattleEvent += RPC_StartTimer;
+        GameManager.OnStartBattleEvent += RPC_StartTimer;
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
@@ -56,7 +57,7 @@ public class GameTimer : NetworkBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        _uiManager.GameOver();
+        OnEndTimerEvent?.Invoke();
         Debug.Log("Timer has ended!");
        
     }
