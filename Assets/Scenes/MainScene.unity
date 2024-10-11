@@ -1399,6 +1399,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1691970334}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1473,6 +1478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1911,6 +1921,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 807156668}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1985,6 +2000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2075,10 +2095,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4437211726926960194, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
         type: 3}
       propertyPath: m_Name
       value: sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2099,6 +2129,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2118,6 +2153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -2174,10 +2214,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2271,6 +2321,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2290,6 +2345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -2346,10 +2406,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3810,7 +3880,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3933,6 +4003,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1418884306}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4008,6 +4083,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: gun
       objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4027,6 +4107,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4046,6 +4131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -4102,10 +4192,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5226,10 +5326,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4437211726926960194, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
         type: 3}
       propertyPath: m_Name
       value: sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6125,6 +6235,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -6186,10 +6301,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -6663,6 +6788,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -6724,10 +6854,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -6835,6 +6975,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -6896,10 +7041,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7165,6 +7320,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7184,6 +7344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -7240,10 +7405,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7397,6 +7572,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -7458,10 +7638,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7882,6 +8072,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -7943,10 +8138,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8186,6 +8391,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2091433480}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8260,6 +8470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11236,6 +11451,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -11255,6 +11475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -11311,10 +11536,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11728,6 +11963,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1674760397}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -11802,6 +12042,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11984,6 +12229,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -12003,6 +12253,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -12059,10 +12314,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12077,6 +12342,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -12096,6 +12366,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -12152,10 +12427,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12699,6 +12984,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -12760,10 +13050,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -13036,6 +13336,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 695808709}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -13110,6 +13415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14200,6 +14510,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -14261,10 +14576,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -15359,6 +15684,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -15420,10 +15750,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -15639,10 +15979,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4437211726926960194, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
         type: 3}
       propertyPath: m_Name
       value: sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16831,6 +17181,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 537475032}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -16906,6 +17261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: gun
       objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16925,6 +17285,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -16986,10 +17351,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -17085,10 +17460,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4437211726926960194, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
         type: 3}
       propertyPath: m_Name
       value: sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17109,6 +17494,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -17170,10 +17560,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -18043,6 +18443,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -18104,10 +18509,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -18406,6 +18821,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -18467,10 +18887,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -19101,6 +19531,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19120,6 +19555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -19176,10 +19616,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19384,10 +19834,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4437211726926960194, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
         type: 3}
       propertyPath: m_Name
       value: sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19408,6 +19868,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 470440165}
     m_Modifications:
+    - target: {fileID: 1219384557746479090, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3305600025995615838, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19483,6 +19948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: gun
       objectReference: {fileID: 0}
+    - target: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19502,6 +19972,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19521,6 +19996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -19577,10 +20057,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20323,6 +20813,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2530897816825422879, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: gun
@@ -20384,10 +20879,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -20851,6 +21356,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1611908914688112913, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3552653595552337636, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -20870,6 +21380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181133980169999454, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4889908971108163274, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
@@ -20926,10 +21441,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553394320862199521, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
         type: 3}
       propertyPath: m_Name
       value: WeaponCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189825235075614630, guid: 95fc7f7b71a80e94db34a01c85080f4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20948,6 +21473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 414579336573493238, guid: 487155b4896f026479e42ae16c1db023,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2239300457548708365, guid: 487155b4896f026479e42ae16c1db023,
         type: 3}
@@ -21008,6 +21538,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SortKey
       value: 335749709
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440874930223522720, guid: 487155b4896f026479e42ae16c1db023,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

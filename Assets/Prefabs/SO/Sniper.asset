@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Ironstrike
   gunDamage: 45
-  maxAmmo: 25
+  maxAmmo: 50
   spreadAmount: 0.001
   fireRate: 0.75
   camShakeDuration: 0.1
-  camShakeIntensity: 0.08
+  camShakeIntensity: 0.2
   gunModel: {fileID: 9206179382425094793, guid: 088a3cee4644f5843aa99b4c4038066d,
     type: 3}

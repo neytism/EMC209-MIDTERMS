@@ -15,6 +15,8 @@ public class PlayerWeapon : NetworkBehaviour
     public static event Action<float, float> OnFireShakeEvent;
     
     private bool _canShoot = true;
+    
+    public LayerMask ignoreLayers;
 
     public bool CanShoot
     {
@@ -163,7 +165,7 @@ public class PlayerWeapon : NetworkBehaviour
 
                 _timeSinceLastFire = currentGun.fireRate;
 
-                if (Physics.Raycast(ray.origin, adjustedDirection, out var hit))
+                if (Physics.Raycast(ray.origin, adjustedDirection, out var hit, Mathf.Infinity, ~ignoreLayers))
                 {
                     if (HasStateAuthority)
                     {

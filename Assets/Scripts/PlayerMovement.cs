@@ -13,8 +13,7 @@ public class PlayerMovement : NetworkBehaviour
     private bool _canMove;
 
     public bool isHelpingTeleport = false;
-    public Vector3 targetPos;
-    public Quaternion targetRot;
+    public Transform targetTransform;
 
     public bool CanMove
     {
@@ -63,9 +62,9 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (isHelpingTeleport)
         {
-            transform.position = targetPos;
-            transform.rotation = targetRot;
-            if (transform.position == targetPos) isHelpingTeleport = true;
+            transform.position = targetTransform.position;
+            transform.rotation = Quaternion.Euler(0, targetTransform.rotation.y, 0);
+            if (transform.position == targetTransform.position) isHelpingTeleport = true;
         }
         // FixedUpdateNetwork is only executed on the StateAuthority
         if (!_canMove) return;

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Stormburst
   gunDamage: 10
-  maxAmmo: 100
+  maxAmmo: 300
   spreadAmount: 0.01
   fireRate: 0.01
   camShakeDuration: 0.1
-  camShakeIntensity: 0.05
+  camShakeIntensity: 0.09
   gunModel: {fileID: 6245057010869996523, guid: 78dcb0fd601a7d240a1e8c0f25ae76c6,
     type: 3}

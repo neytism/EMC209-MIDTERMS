@@ -104,8 +104,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
 
         playerMovement.CanMove = false;
 
-        playerMovement.targetPos = spawnPoint.position;
-        playerMovement.targetRot = spawnPoint.rotation;
+        playerMovement.targetTransform = spawnPoint;
         playerMovement.isHelpingTeleport = true;
 
         

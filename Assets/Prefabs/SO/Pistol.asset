@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Quickshot
   gunDamage: 20
-  maxAmmo: 30
+  maxAmmo: 100
   spreadAmount: 0.005
   fireRate: 0.2
   camShakeDuration: 0.1

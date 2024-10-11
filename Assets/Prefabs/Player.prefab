@@ -403,6 +403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHolderTransform: {fileID: 1016308584935642251}
+  isHelpingTeleport: 0
+  targetTransform: {fileID: 0}
   playerSpeed: 5
   jumpForce: 5
   gravityValue: -9.81
@@ -520,8 +522,6 @@ MonoBehaviour:
   _IsReadyPlayer: 0
   _IsRedTeam: 0
   playerMovement: {fileID: 397367914512276830}
-  playerHealth: {fileID: 1466461988936727918}
-  targetSpawnPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &1703056448110035913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6cd75bc7d270e4a9eec1a334d82402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 384
   _NetworkedGunName: 
   currentGun: {fileID: 0}
   currentAmmo: 0
