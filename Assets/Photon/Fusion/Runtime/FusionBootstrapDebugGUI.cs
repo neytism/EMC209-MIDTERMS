@@ -9,8 +9,18 @@ namespace Fusion {
   [RequireComponent(typeof(FusionBootstrap))]
   [AddComponentMenu("Fusion/Fusion Boostrap Debug GUI")]
   [ScriptHelp(BackColor = ScriptHeaderBackColor.Steel)]
-  public class FusionBootstrapDebugGUI : Fusion.Behaviour {
-
+  public class FusionBootstrapDebugGUI : Fusion.Behaviour
+  {
+    public event Action OnLogoutEvent;
+    public event Action<string, string> OnLogInEvent;
+    public event Action<string, string, string, string> OnRegisterEvent;
+    public bool isLoggingIn = true;
+    public bool isRegistering;
+    public bool isLoggedIn;
+    public bool isAttemptingToLogIn;
+    public bool showError;
+    public string errorMessage = "";
+    
     /// <summary>
     /// When enabled, the in-game user interface buttons can be activated with the keys H (Host), S (Server) and C (Client).
     /// </summary>
@@ -142,6 +152,8 @@ namespace Fusion {
         }
       }
     }
+    
+    private Vector2 scrollPosition;
 
     protected virtual void OnGUI() {
 
@@ -161,7 +173,9 @@ namespace Fusion {
 
       GUILayout.BeginArea(new Rect(leftBoxMargin, margin, width, Screen.height));
       {
-        GUILayout.BeginVertical(GUI.skin.window);
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(Screen.height - margin));
+        {
+          GUILayout.BeginVertical(GUI.skin.window);
         {
           GUILayout.BeginHorizontal(GUILayout.Height(height));
           {
@@ -178,86 +192,181 @@ namespace Fusion {
           GUILayout.EndHorizontal();
         }
         GUILayout.EndVertical();
+        
+        if (isLoggedIn)
+        {
+          GUILayout.BeginVertical(GUI.skin.window);
+          {
+            GUILayout.BeginHorizontal(GUILayout.Height(height));
+            {
+
+              GUILayout.Label($"Welcome, {nds.Username}", new GUIStyle(GUI.skin.label) { fontSize = (int)(GUI.skin.label.fontSize * .8f), alignment = TextAnchor.UpperLeft });
+
+            }
+            GUILayout.EndHorizontal();
+          }
+          GUILayout.EndVertical();
+        }
 
         GUILayout.BeginVertical(GUI.skin.window);
         {
 
           if (currentstage == FusionBootstrap.Stage.Disconnected) {
 
-            GUILayout.BeginHorizontal();
+            // GUILayout.BeginHorizontal();
+            // {
+            //   GUILayout.Label("Room:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+            //   nds.DefaultRoomName = GUILayout.TextField(nds.DefaultRoomName, 25, GUILayout.Height(height));
+            // }
+            // GUILayout.EndHorizontal();
+
+            if (isLoggingIn)
             {
-              GUILayout.Label("Room:", GUILayout.Height(height), GUILayout.Width(width * .33f));
-              nds.DefaultRoomName = GUILayout.TextField(nds.DefaultRoomName, 25, GUILayout.Height(height));
-            }
-            GUILayout.EndHorizontal();
-            
-            GUILayout.BeginHorizontal();
-            {
-              GUILayout.Label("Nickname:", GUILayout.Height(height), GUILayout.Width(width * .33f));
-              nds.DefaultNickname = GUILayout.TextField(nds.DefaultNickname, 25, GUILayout.Height(height));
-            }
-            GUILayout.EndHorizontal();
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Single Player (I)" : "Start Single Player", GUILayout.Height(height))) {
-              nds.StartSinglePlayer();
-            }
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "Start Shared Client", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartMultipleSharedClients(nds);
-              } else {
-                nds.StartSharedClient();
-              }
-            }
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Server (S)" : "Start Server", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartServerWithClients(nds);
-
-              } else {
-                nds.StartServer();
-              }
-            }
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Host (H)" : "Start Host", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartHostWithClients(nds);
-              } else {
-                nds.StartHost();
-              }
-            }
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Client (C)" : "Start Client", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartMultipleClients(nds);
-              } else {
-                nds.StartClient();
-              }
-            }
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Auto Host Or Client (A)" : "Start Auto Host Or Client", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartMultipleAutoClients(nds);
-              } else {
-                nds.StartAutoClient();
-              }
-            }
-
-            if (_isMultiplePeerMode) {
-
-              GUILayout.BeginHorizontal(/*GUI.skin.button*/);
+              GUILayout.BeginHorizontal();
               {
-                GUILayout.Label("Client Count:", GUILayout.Height(height));
-                GUILayout.Label("", GUILayout.Width(4));
-                string newcount = GUILayout.TextField(_clientCount, 10, GUILayout.Width(width * .25f), GUILayout.Height(height));
-                if (_clientCount != newcount) {
-                  // Remove everything but numbers from our client count string.
-                  _clientCount = newcount;
-                  ValidateClientCount();
-                }
+                GUILayout.Label("Username:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+                nds.Username = GUILayout.TextField(nds.Username, 25, GUILayout.Height(height));
               }
               GUILayout.EndHorizontal();
+              
+              GUILayout.BeginHorizontal();
+              {
+                GUILayout.Label("Password:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+                nds.Password = GUILayout.PasswordField(nds.Password, '*', 25, GUILayout.Height(height));
+              }
+              GUILayout.EndHorizontal();
+
+              if (GUILayout.Button("Login", GUILayout.Height(height)))
+              {
+                Debug.Log("Login");
+                OnLogInEvent?.Invoke(nds.Username, nds.Password);
+              }
+              
+              if (GUILayout.Button("Don't Have An Account.", GUILayout.Height(height)))
+              {
+                isLoggingIn = false;
+                isRegistering = true;
+              }
             }
+
+            if (isRegistering)
+            {
+              GUILayout.BeginHorizontal();
+              {
+                GUILayout.Label("Username:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+                nds.Username = GUILayout.TextField(nds.Username, 25, GUILayout.Height(height));
+              }
+              GUILayout.EndHorizontal();
+              
+              GUILayout.BeginHorizontal();
+              {
+                GUILayout.Label("Email:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+                nds.Email = GUILayout.TextField(nds.Email, 25, GUILayout.Height(height));
+              }
+              GUILayout.EndHorizontal();
+              
+              GUILayout.BeginHorizontal();
+              {
+                GUILayout.Label("Password:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+                nds.Password = GUILayout.PasswordField(nds.Password, '*', 25, GUILayout.Height(height));
+              }
+              GUILayout.EndHorizontal();
+              
+              GUILayout.BeginHorizontal();
+              {
+                GUILayout.Label("Repeat Password:", GUILayout.Height(height), GUILayout.Width(width * .33f));
+                nds.RepeatPassword = GUILayout.PasswordField(nds.RepeatPassword, '*', 25, GUILayout.Height(height));
+              }
+              GUILayout.EndHorizontal();
+
+              if (GUILayout.Button("Register", GUILayout.Height(height)))
+              {
+                //OnLogInEvent?.Invoke(nds.Username, nds.Password);
+                OnRegisterEvent?.Invoke(nds.Username, nds.Email, nds.Password, nds.RepeatPassword);
+              }
+              
+              if (GUILayout.Button("Already Have An Account.", GUILayout.Height(height)))
+              {
+                isLoggingIn = true;
+                isRegistering = false;
+              }
+            }
+            
+            if(isLoggedIn)
+            {
+              if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "Start Shared Client", GUILayout.Height(height))) {
+                if (_isMultiplePeerMode) {
+                  StartMultipleSharedClients(nds);
+                } else {
+                  nds.StartSharedClient();
+                }
+              }
+
+              if (GUILayout.Button("Logout", GUILayout.Height(height)))
+              {
+                OnLogoutEvent?.Invoke();
+                Debug.Log("Logout");
+                nds.Username = "";
+                nds.Password = "";
+                isLoggedIn = false;
+                isLoggingIn = true;
+              }
+
+            }
+            
+            // if (GUILayout.Button(EnableHotkeys ? "Start Single Player (I)" : "Start Single Player", GUILayout.Height(height))) {
+              //   nds.StartSinglePlayer();
+              // }
+
+            
+              // if (GUILayout.Button(EnableHotkeys ? "Start Server (S)" : "Start Server", GUILayout.Height(height))) {
+              //   if (_isMultiplePeerMode) {
+              //     StartServerWithClients(nds);
+              //
+              //   } else {
+              //     nds.StartServer();
+              //   }
+              // }
+              //
+              // if (GUILayout.Button(EnableHotkeys ? "Start Host (H)" : "Start Host", GUILayout.Height(height))) {
+              //   if (_isMultiplePeerMode) {
+              //     StartHostWithClients(nds);
+              //   } else {
+              //     nds.StartHost();
+              //   }
+              // }
+              //
+              // if (GUILayout.Button(EnableHotkeys ? "Start Client (C)" : "Start Client", GUILayout.Height(height))) {
+              //   if (_isMultiplePeerMode) {
+              //     StartMultipleClients(nds);
+              //   } else {
+              //     nds.StartClient();
+              //   }
+              // }
+              //
+              // if (GUILayout.Button(EnableHotkeys ? "Start Auto Host Or Client (A)" : "Start Auto Host Or Client", GUILayout.Height(height))) {
+              //   if (_isMultiplePeerMode) {
+              //     StartMultipleAutoClients(nds);
+              //   } else {
+              //     nds.StartAutoClient();
+              //   }
+              // }
+
+              if (_isMultiplePeerMode) {
+
+                GUILayout.BeginHorizontal(/*GUI.skin.button*/);
+                {
+                  GUILayout.Label("Client Count:", GUILayout.Height(height));
+                  GUILayout.Label("", GUILayout.Width(4));
+                  string newcount = GUILayout.TextField(_clientCount, 10, GUILayout.Width(width * .25f), GUILayout.Height(height));
+                  if (_clientCount != newcount) {
+                    // Remove everything but numbers from our client count string.
+                    _clientCount = newcount;
+                    ValidateClientCount();
+                  }
+                }
+                GUILayout.EndHorizontal();
+              }
           } else {
 
             if (GUILayout.Button("Shutdown", GUILayout.Height(height))) {
@@ -267,7 +376,46 @@ namespace Fusion {
 
           GUILayout.EndVertical();
         }
+        
+        
+        if (isAttemptingToLogIn)
+        {
+          GUILayout.BeginVertical(GUI.skin.window);
+          {
+            GUILayout.BeginHorizontal(GUILayout.Height(height));
+            {
+
+              GUILayout.Label("Logging in...",
+                new GUIStyle(GUI.skin.label) { fontSize = (int)(GUI.skin.label.fontSize * .8f), alignment = TextAnchor.UpperLeft });
+
+            }
+            GUILayout.EndHorizontal();
+          }
+          GUILayout.EndVertical();
+        }
+        
+        if (showError)
+        {
+          GUILayout.BeginVertical(GUI.skin.window);
+          {
+            GUILayout.BeginHorizontal(GUILayout.Height(height));
+            {
+
+              GUILayout.Label(errorMessage,
+                new GUIStyle(GUI.skin.label) { fontSize = (int)(GUI.skin.label.fontSize * .8f), alignment = TextAnchor.UpperLeft });
+
+            }
+            GUILayout.EndHorizontal();
+          }
+          GUILayout.EndVertical();
+        }
+        
+        }
+        
+        GUILayout.EndScrollView();
       }
+        
+        
       GUILayout.EndArea();
 
       GUI.skin = holdskin;

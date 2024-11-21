@@ -39,8 +39,8 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!HasStateAuthority) return;
         
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         
         mainCamera = Camera.main;
         if (mainCamera != null)

@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
    public event Action<string> OnButtonSendChatEvent;
+   public event Action OnStartSharedModeButtonEvent;
+   
+   public event Action OnDeleteAccountEvent;
    
    [Header("General")]
    public GameObject HUDObject;
@@ -47,6 +50,23 @@ public class UIManager : MonoBehaviour
    public GameObject gameOverPanel;
    public TextMeshProUGUI teamWinnerText;
    public GameObject playerInfoKDPrefab;
+   
+   [Header("Finals Menu")]
+   //general
+   public HttpRequests httpRequests;
+   public GameObject menuPanel;
+   //Get Users
+   public GameObject userListPrefab;
+   public RectTransform userListParent;
+   //Get Specific User Info
+   public RectTransform specificUserInfoHolder;
+   public TMP_InputField specificUserInputField;
+   //leaderboard
+   public GameObject leaderboardPrefab;
+   public RectTransform leaderboardParent;
+   
+   
+
    
    private void Awake()
    {
@@ -205,5 +225,105 @@ public class UIManager : MonoBehaviour
       playerListKD.gameObject.SetActive(true);
    }
 
+   public void StartSharedModeButton()
+   {
+      OnStartSharedModeButtonEvent?.Invoke();
+   }
+
+
+   public void ShowMenu()
+   {
+      menuPanel.SetActive(true);
+   }
+
+   public void ClearListedUsers()
+   {
+      StartCoroutine(httpRequests.TryGetAllUsers(users =>
+      {
+         VerticalLayoutGroup vertLayoutGroup = userListParent.parent.GetComponent<VerticalLayoutGroup>();
+         vertLayoutGroup.enabled = false;
+         
+         if (userListParent.childCount > 1)
+         {
+            for (int i = userListParent.childCount - 1; i > 0; i--)
+            {
+               Destroy(userListParent.GetChild(i).gameObject); 
+            }
+         }
+         
+         foreach (var user in users)
+         {
+            GameObject o = Instantiate(userListPrefab, userListParent);
+            o.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = user.id.ToString();
+            o.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = user.username;
+            o.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = user.email;
+            o.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = user.kills.ToString();
+            o.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = user.deaths.ToString();
+         }
+
+         vertLayoutGroup.enabled = true;
+         
+      }));
+      
+   }
+
+   public void SearchUser()
+   {
+      string searchUsername = specificUserInputField.text;
+      
+      StartCoroutine(httpRequests.TryGetSpecificUser(searchUsername, httpUserData =>
+      {
+         specificUserInfoHolder.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = httpUserData.id.ToString();
+         specificUserInfoHolder.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = httpUserData.username;
+         specificUserInfoHolder.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = httpUserData.email;
+         specificUserInfoHolder.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = httpUserData.kills.ToString();
+         specificUserInfoHolder.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = httpUserData.deaths.ToString();
+      }, s =>
+      {
+         specificUserInfoHolder.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = s;
+      } ));
+   }
+
+   public void GetTopTen()
+   {
+      StartCoroutine(httpRequests.TryGetTopTen(users =>
+      {
+         VerticalLayoutGroup vertLayoutGroup = leaderboardParent.parent.GetComponent<VerticalLayoutGroup>();
+         vertLayoutGroup.enabled = false;
+         
+         if (leaderboardParent.childCount > 1)
+         {
+            for (int i = leaderboardParent.childCount - 1; i > 0; i--)
+            {
+               Destroy(leaderboardParent.GetChild(i).gameObject); 
+            }
+         }
+
+         int rank = 0;
+         
+         foreach (var user in users)
+         {
+            rank++;
+            GameObject o = Instantiate(leaderboardPrefab, leaderboardParent);
+            o.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"#{rank}";
+            o.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = user.username;
+            o.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = user.kills.ToString();
+            o.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = user.deaths.ToString();
+            o.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = user.ratio.ToString();
+         }
+
+         vertLayoutGroup.enabled = true;
+         
+      }));
+   }
+   
+   public void DeleteAccount()
+   {
+      StartCoroutine(httpRequests.TryDeleteAccount(() =>
+      {
+         OnDeleteAccountEvent?.Invoke();
+      }));
+   }
+   
    
 }

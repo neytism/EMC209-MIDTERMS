@@ -115,7 +115,10 @@ namespace Fusion {
     /// </summary>
     [InlineHelp]
     public string DefaultRoomName = string.Empty; // empty/null means Random Room Name
-    public string DefaultNickname = string.Empty;
+    public string Username = string.Empty;
+    public string Email = string.Empty;
+    public string Password = string.Empty;
+    public string RepeatPassword = string.Empty;
     [NonSerialized]
     NetworkRunner _server;
 

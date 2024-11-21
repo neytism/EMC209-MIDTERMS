@@ -661,7 +661,7 @@ namespace Fusion {
 
 #region Assets/Photon/Fusion/Runtime/FusionCoroutine.cs
 
-﻿
+ 
 namespace Fusion {
   using UnityEngine;
   using System;
@@ -2063,7 +2063,7 @@ namespace Fusion {
 
 #region Assets/Photon/Fusion/Runtime/NetworkObjectBaker.cs
 
-﻿//#undef UNITY_EDITOR
+ //#undef UNITY_EDITOR
 namespace Fusion {
   using System;
   using System.Collections.Generic;

@@ -105,8 +105,10 @@ public class PlayerHealth : NetworkBehaviour
                 
                 if (Camera.main != null) Camera.main.GetComponent<FirstPersonCamera>().SetDeathCamPos(deathCamTransform);
                 OnDeathEvent?.Invoke(transform.position); // effect
+                
                 //add update count kill and death
                 RPC_RelayDeathInfo(Object.StateAuthority.PlayerId, _shooterID);
+                
                 //Start coroutine here before respawning
                 
                 playerTeam.SpawnAndSetColor();
