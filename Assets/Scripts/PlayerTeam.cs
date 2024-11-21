@@ -17,6 +17,8 @@ public class PlayerTeam : NetworkBehaviour //player manager
     [Networked] public bool IsRedTeam { get; set; } 
 
     private TeamManager _teamManager;
+    
+    public PlayerName playerName;
     public PlayerMovement playerMovement;
 
     public override void Spawned()
@@ -36,7 +38,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
             isReady = IsReadyPlayer,
             isRedTeam = IsRedTeam,
             kills = Kills,
-            onlineId = Object.StateAuthority.PlayerId
+            onlineId = playerName.id
         };
         
         string ser = JsonUtility.ToJson(player);
@@ -53,7 +55,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
             IsReadyPlayer = b;
         }
 
-        RPC_RelayReadyStatus(Object.StateAuthority.PlayerId, IsReadyPlayer);
+        RPC_RelayReadyStatus(playerName.id, IsReadyPlayer);
 
     }
 
@@ -85,7 +87,7 @@ public class PlayerTeam : NetworkBehaviour //player manager
         
 
         RPC_SendJoinTeam(IsRedTeam);
-        RPC_RelayTeamSet(Object.StateAuthority.PlayerId, IsRedTeam);
+        RPC_RelayTeamSet(playerName.id, IsRedTeam);
     }
     
     [Rpc]

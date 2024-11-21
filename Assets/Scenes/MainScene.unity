@@ -28620,6 +28620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInfos: []
   _UIManager: {fileID: 667906285}
+  _httpRequests: {fileID: 2033372272}
 --- !u!4 &2033372271
 Transform:
   m_ObjectHideFlags: 0
@@ -28666,6 +28667,14 @@ MonoBehaviour:
   httpRequests: {fileID: 2033372272}
   nds: {fileID: 1945102975}
   ndsGUI: {fileID: 1945102974}
+  currentPlayerData:
+    id: 0
+    username: 
+    email: 
+    password: 
+    kills: 0
+    deaths: 0
+    ratio: 
 --- !u!224 &2039652531 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 255549890356622748, guid: a9769eadc431c1248a58fe58ebb622a4,

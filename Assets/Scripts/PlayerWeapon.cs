@@ -34,6 +34,7 @@ public class PlayerWeapon : NetworkBehaviour
     
     public PlayerMovement playerMovement;
     public PlayerHealth playerHealth;
+    public PlayerName playerName;
     
     
     private float _timeSinceLastFire;
@@ -53,7 +54,7 @@ public class PlayerWeapon : NetworkBehaviour
         //Debug
         if (HasStateAuthority && Input.GetKeyDown(KeyCode.K))
         {
-            playerHealth.DealDamageRpc(20, Object.StateAuthority.PlayerId);
+            playerHealth.DealDamageRpc(20, playerName.id);
         }
     }
 
@@ -184,7 +185,7 @@ public class PlayerWeapon : NetworkBehaviour
                         if (hit.collider.TryGetComponent<PlayerHealth>(out var health))
                         {
                             Debug.Log("Hit and dealing Damage");
-                            health.DealDamageRpc(currentGun.gunDamage, Object.StateAuthority.PlayerId);
+                            health.DealDamageRpc(currentGun.gunDamage, playerName.id);
                         }
                     }
                 }

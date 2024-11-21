@@ -471,6 +471,7 @@ MonoBehaviour:
   healthCrate: {fileID: 414579336573493238, guid: 487155b4896f026479e42ae16c1db023,
     type: 3}
   playerTeam: {fileID: 8703634635463100096}
+  playerName: {fileID: 7121512848057894366}
   deathCamTransform: {fileID: 3810122257366650390}
   bodyCollider: {fileID: 2593047878717765905}
   characterController: {fileID: 2642326502543000927}
@@ -490,8 +491,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nickname: 
+  id: 0
   thisID: 0
   _NetworkedNickname: 
+  _NetworkedID: 0
 --- !u!114 &6215726281277752895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +525,7 @@ MonoBehaviour:
   _Deaths: 0
   _IsReadyPlayer: 0
   _IsRedTeam: 0
+  playerName: {fileID: 7121512848057894366}
   playerMovement: {fileID: 397367914512276830}
 --- !u!114 &1703056448110035913
 MonoBehaviour:
@@ -558,6 +562,7 @@ MonoBehaviour:
   currentFirePoint: {fileID: 2057229921549325165}
   playerMovement: {fileID: 397367914512276830}
   playerHealth: {fileID: 1466461988936727918}
+  playerName: {fileID: 7121512848057894366}
 --- !u!114 &3766904688886687890
 MonoBehaviour:
   m_ObjectHideFlags: 0

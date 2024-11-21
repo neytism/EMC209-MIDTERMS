@@ -20,7 +20,8 @@ public class HttpRequests : MonoBehaviour
     private const string CHECK_EMAIL = "/users/checkEmail";
     private const string REGISTER = "/users/register";
     private const string UPDATE_PASSWORD = "/users/updatePassword";
-    private const string DELETE = "/users/delete";
+    private const string DEATHS = "/users/deaths";
+    private const string KILLS = "/users/kills";
 
     public RawImage _imageToReplace;
     public GameObject _usersContainer;
@@ -410,7 +411,28 @@ public class HttpRequests : MonoBehaviour
             List<HttpUserData> users = JsonConvert.DeserializeObject<List<HttpUserData>>(request.downloadHandler.text);
             successAction?.Invoke(users);
         }
-        
+    }
+
+    public IEnumerator TryIncreaseDeaths(int idDead)
+    {
+        var request = UnityWebRequest.Get(MAIN + DEATHS + "/" + idDead);
+        yield return request.SendWebRequest();
+
+        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError(request.error);
+        }
+    }
+    
+    public IEnumerator TryIncreaseKills(int idKiller)
+    {
+        var request = UnityWebRequest.Get(MAIN + KILLS + "/" + idKiller);
+        yield return request.SendWebRequest();
+
+        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError(request.error);
+        }
     }
     
     public IEnumerator TryDeleteUser(HttpUserData userData, Action successAction)

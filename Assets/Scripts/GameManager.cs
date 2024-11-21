@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour
 
    public static event Action OnStartBattleEvent;
    [SerializeField] private  UIManager _UIManager;
+   [SerializeField] private  HttpRequests _httpRequests;
 
    private void OnEnable()
    {
       PlayerHealth.OnDeathUpdateKDEvent += UpdateKillDeathInfo;
       PlayerTeam.OnChangeReadyStatusEvent += SetPlayerAsReady;
       PlayerTeam.OnChangeTeamStatusEvent += SetPlayerTeam;
+      PlayerHealth.OnUpdateSeverPlayerStatsEvent += UpdateSeverPlayerStats;
       GameTimer.OnEndTimerEvent += GameOver;
    }
 
@@ -126,6 +128,14 @@ public class GameManager : MonoBehaviour
    private void SortPlayerInfosByKills()
    {
       playerInfos.Sort((p1, p2) => p2.kills.CompareTo(p1.kills));
+   }
+
+   private void UpdateSeverPlayerStats(int idDead, int idKiller)
+   {
+      Debug.Log($"increase death of player: {idDead} --- increase kill of player: {idKiller}");
+
+      StartCoroutine(_httpRequests.TryIncreaseDeaths(idDead));
+      StartCoroutine(_httpRequests.TryIncreaseKills(idKiller));
    }
 
 }

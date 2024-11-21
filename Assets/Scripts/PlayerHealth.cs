@@ -8,8 +8,11 @@ public class PlayerHealth : NetworkBehaviour
 {
     public static event Action<float,float> OnLocalPlayerChangeHealthEvent; 
     public static event Action<int,int> OnDeathUpdateKDEvent; 
+    
+    public static event Action<int,int> OnUpdateSeverPlayerStatsEvent; 
     public static event Action OnLocalPlayerHurtEvent; 
     public static event Action<Vector3> OnDeathEvent;
+    
 
     private const float MaxHealth = 100f;
     public event Action<float> OnDamageEvent;
@@ -18,6 +21,7 @@ public class PlayerHealth : NetworkBehaviour
 
     public GameObject healthCrate;
     public PlayerTeam playerTeam;
+    public PlayerName playerName;
     public Transform deathCamTransform;
 
     [Header("Things to toggle on death")] 
@@ -107,7 +111,8 @@ public class PlayerHealth : NetworkBehaviour
                 OnDeathEvent?.Invoke(transform.position); // effect
                 
                 //add update count kill and death
-                RPC_RelayDeathInfo(Object.StateAuthority.PlayerId, _shooterID);
+                RPC_RelayDeathInfo(playerName.id, _shooterID);
+                OnUpdateSeverPlayerStatsEvent?.Invoke(playerName.id, _shooterID);
                 
                 //Start coroutine here before respawning
                 
