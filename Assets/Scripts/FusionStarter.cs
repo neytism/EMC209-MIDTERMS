@@ -19,24 +19,24 @@ public class FusionStarter : MonoBehaviour
     private void Awake()
     {
         _uiManager = FindObjectOfType<UIManager>();
+        _authToken = "";
+        
         if (PlayerPrefs.HasKey("token"))
         {
             _authToken = PlayerPrefs.GetString("token");
-            StartCoroutine(httpRequests.TryTokenLogin(_authToken, httpUserData =>
-            {
-                currentPlayerData = httpUserData;
-                nds.Username = currentPlayerData.username;
-                ndsGUI.isAttemptingToLogIn = false;
-                ndsGUI.showError = false;
-                ndsGUI.isLoggedIn = true;
-                ndsGUI.isRegistering = false;
-                ndsGUI.isLoggingIn = false;
-            }));
+            
         }
-        else
+        
+        StartCoroutine(httpRequests.TryTokenLogin(_authToken, httpUserData =>
         {
-            Debug.Log("No token saved");
-        }
+            currentPlayerData = httpUserData;
+            nds.Username = currentPlayerData.username;
+            ndsGUI.isAttemptingToLogIn = false;
+            ndsGUI.showError = false;
+            ndsGUI.isLoggedIn = true;
+            ndsGUI.isRegistering = false;
+            ndsGUI.isLoggingIn = false;
+        }));
     }
 
     private void Start()

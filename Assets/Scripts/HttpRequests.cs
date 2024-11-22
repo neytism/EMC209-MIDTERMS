@@ -9,173 +9,25 @@ using UnityEngine.UI;
 
 public class HttpRequests : MonoBehaviour
 {
-    [SerializeField] private GameObject _userContainerPrefab;
-    [SerializeField] private Transform _userUIParent;
     private const string MAIN = "http://localhost:3000";
     private const string USERS = "/users";
     private const string LEADERBOARD = "/leaderboard";
-    private const string USER_CURRENT = "/users/current";
-    private const string LOGIN = "/users/login";
-    private const string CHECK_USERNAME = "/users/checkUsername";
-    private const string CHECK_EMAIL = "/users/checkEmail";
-    private const string REGISTER = "/users/register";
-    private const string UPDATE_PASSWORD = "/users/updatePassword";
-    private const string DEATHS = "/users/deaths";
-    private const string KILLS = "/users/kills";
+    private const string ME = "/users/me";
+    private const string LOGIN = "/auth/login";
+    private const string DEATHS = "/combat/deaths";
+    private const string KILLS = "/combat/kills";
 
-    public RawImage _imageToReplace;
-    public GameObject _usersContainer;
-
-    private HttpData data;
-    
     private List<HttpUserData> users;
-
-    private IEnumerator Start()
-    {
-        //yield return HttpGetRequestData(MAIN + USERS);
-        
-        //yield return HttpDeleteRequest(MAIN + REG + "/4");
-        
-        //yield return HttpPutRequest(MAIN + REG + "/4", putData);
-        
-        //yield return HttpPostRequest(MAIN + REG, userData);
-        
-        //yield return HttpGetRequest(MAIN + USERS);
-        
-        //yield return GetTextureFomUri(imageUri);
-        
-        yield break;
-    }
-
-    public IEnumerator HttpGetRequestDataAfterLogin()
-    {
-        _usersContainer.SetActive(true);
-        yield return HttpGetRequestData(MAIN + USERS);
-    }
-    
-    private IEnumerator HttpGetRequestData(string uri)
-    {
-        var request = UnityWebRequest.Get(uri);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            //Debug.Log(request.downloadHandler.text);
-
-            //data.userData = new List<HttpUserData>();
-
-            Debug.Log(request.downloadHandler.text);
-
-            users = JsonConvert.DeserializeObject<List<HttpUserData>>(request.downloadHandler.text);
-            
-            foreach (var user in users)
-            {
-
-                //UIUserContainer userContainer = Instantiate(_userContainerPrefab, _userUIParent).GetComponent<UIUserContainer>();
-                
-                //userContainer.SetUpUserContainer(user.username, user.email);
-                    
-                
-            }
-        }
-    }
-
-    private IEnumerator HttpGetRequest(string uri)
-    {
-        var request = UnityWebRequest.Get(uri);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            Debug.Log(request.downloadHandler.text);
-        }
-    }
-    
-    
-    private IEnumerator HttpPostRequest(string uri, string data)
-    {
-        var request = UnityWebRequest.Post(uri, data, "application/json");
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            //Debug.Log(request.downloadHandler.text);
-            //var auth = JsonConvert.DeserializeObject<Authentication>(request.downloadHandler.text);
-            //Debug.Log(auth.token);
-        }
-    }
-    
-    private IEnumerator HttpPutRequest(string uri, string data)
-    {
-        var request = UnityWebRequest.Post(uri, data, "application/json");
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            Debug.Log(request.downloadHandler.text);
-        }
-    }
-    
-    private IEnumerator HttpDeleteRequest(string uri)
-    {
-        var request = UnityWebRequest.Delete(uri);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            Debug.Log("User Deleted");
-            
-        }
-    }
-    
-    private IEnumerator GetTextureFomUri(string uri, Action<Texture> callback)
-    {
-        Texture texture = null;
-        var request = UnityWebRequestTexture.GetTexture(uri);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            texture = DownloadHandlerTexture.GetContent(request);
-            callback?.Invoke(texture);
-            
-        }
-
-    }
 
     public IEnumerator TryTokenLogin(string token, Action<HttpUserData> successAction)
     {
-        var request = UnityWebRequest.Get(MAIN + USER_CURRENT);
+        var request = UnityWebRequest.Get(MAIN + ME);
         request.SetRequestHeader("Authorization", $"Bearer {token}");
         yield return request.SendWebRequest();
                 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
@@ -202,7 +54,7 @@ public class HttpRequests : MonoBehaviour
 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
@@ -220,13 +72,13 @@ public class HttpRequests : MonoBehaviour
                 //Debug.Log(token);
                 newTokenAction?.Invoke(token);
                 
-                request = UnityWebRequest.Get(MAIN + USER_CURRENT);
+                request = UnityWebRequest.Get(MAIN + ME);
                 request.SetRequestHeader("Authorization", $"Bearer {token}");
                 yield return request.SendWebRequest();
                 
                 if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
                 {
-                    Debug.LogError(request.error);
+                    Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
                 }
                 else
                 {
@@ -234,55 +86,13 @@ public class HttpRequests : MonoBehaviour
                     successAction?.Invoke(user);
                 }
             }
-            
-            // var user = JsonConvert.DeserializeObject<HttpUserData>(request.downloadHandler.text);
-            // successAction?.Invoke(user);
-            
-            
-        
+
         }
         
     }
     
     public IEnumerator TryRegister(string username, string email, string password, Action<string> failedAction, Action<HttpUserData> successAction, Action<string> newTokenAction)
     {
-        //check usernam
-        var request = UnityWebRequest.Get(MAIN + CHECK_USERNAME + "/" + username);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            if (request.downloadHandler.text == "username_taken")
-            {
-                failedAction?.Invoke("Username Taken");
-                yield break;
-                //username used
-            }
-        }
-        
-        //check email
-        request = UnityWebRequest.Get(MAIN + CHECK_EMAIL + "/" + email);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            if (request.downloadHandler.text == "email_taken")
-            {
-                failedAction?.Invoke("Email is already used by other user.");
-                yield break;
-                //Email used
-            }
-        }
-        
-        //string usernamePassword = $"{{\"username\": \"{username}\", \"password\": \"{password}\"}}";
         var newUser = new
         {
             username = username,
@@ -292,12 +102,14 @@ public class HttpRequests : MonoBehaviour
         
         string newUserSerialized = JsonConvert.SerializeObject(newUser);
         
-        request = UnityWebRequest.Post(MAIN + REGISTER, newUserSerialized, "application/json");
+        var request = UnityWebRequest.Post(MAIN + USERS, newUserSerialized, "application/json");
         yield return request.SendWebRequest();
 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            if (request.responseCode == 405) failedAction?.Invoke(request.downloadHandler.text);
+            if (request.responseCode == 406) failedAction?.Invoke(request.downloadHandler.text);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
@@ -308,13 +120,13 @@ public class HttpRequests : MonoBehaviour
             //Debug.Log(token);
             newTokenAction?.Invoke(token);
                 
-            request = UnityWebRequest.Get(MAIN + USER_CURRENT);
+            request = UnityWebRequest.Get(MAIN + ME);
             request.SetRequestHeader("Authorization", $"Bearer {token}");
             yield return request.SendWebRequest();
                 
             if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
-                Debug.LogError(request.error);
+                Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
             }
             else
             {
@@ -344,7 +156,7 @@ public class HttpRequests : MonoBehaviour
                 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
@@ -371,7 +183,7 @@ public class HttpRequests : MonoBehaviour
                 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
@@ -404,7 +216,7 @@ public class HttpRequests : MonoBehaviour
                 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
@@ -415,65 +227,45 @@ public class HttpRequests : MonoBehaviour
 
     public IEnumerator TryIncreaseDeaths(int idDead)
     {
-        var request = UnityWebRequest.Get(MAIN + DEATHS + "/" + idDead);
+        var increaseResponse = new
+        {
+            id = idDead,
+            increase = 1
+        };
+
+        string body = JsonConvert.SerializeObject(increaseResponse);
+        
+        var request = UnityWebRequest.Put(MAIN + DEATHS, body);
+        request.SetRequestHeader("Content-Type", "application/json");
+        
         yield return request.SendWebRequest();
 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
     }
     
     public IEnumerator TryIncreaseKills(int idKiller)
     {
-        var request = UnityWebRequest.Get(MAIN + KILLS + "/" + idKiller);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+        var increaseResponse = new
         {
-            Debug.LogError(request.error);
-        }
-    }
-    
-    public IEnumerator TryDeleteUser(HttpUserData userData, Action successAction)
-    {
-        var request = UnityWebRequest.Delete(MAIN + USERS + "/" + userData.id);
-        yield return request.SendWebRequest();
-
-        if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            successAction?.Invoke();
-            
-        }
-    }
-    
-    public IEnumerator TryUpdatePassword(int id, string newPassword, Action successAction)
-    {
-        var user = new
-        {
-            id = id,
-            password = newPassword
+            id = idKiller,
+            increase = 1
         };
         
-        string ser = JsonConvert.SerializeObject(user);
+        string body = JsonConvert.SerializeObject(increaseResponse);
 
-        var request = UnityWebRequest.Post(MAIN + UPDATE_PASSWORD,ser, "application/json");
+        var request = UnityWebRequest.Put(MAIN + KILLS, body);
+        request.SetRequestHeader("Content-Type", "application/json");
+        
         yield return request.SendWebRequest();
 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            successAction?.Invoke();
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
     }
-
     public IEnumerator TryDeleteAccount(Action successAction)
     {
         var request = UnityWebRequest.Delete(MAIN + USERS);
@@ -493,20 +285,13 @@ public class HttpRequests : MonoBehaviour
                 
         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError(request.error);
+            Debug.LogError($"Error {request.responseCode}: {request.downloadHandler.text}");
         }
         else
         {
             successAction?.Invoke();
         }
     }
-}
-
-[Serializable]
-public struct Authentication
-{
-    public string username;
-    public string password;
 }
 
 [Serializable]
@@ -519,16 +304,6 @@ public struct HttpUserData
     public int kills;
     public int deaths;
     public string ratio;
-}
-
-[Serializable]
-public struct HttpData
-{
-    public string page;
-    public string perPage;
-    public string total;
-    public string totalPages;
-    public List<HttpUserData> data;
 }
 
 [Serializable]
